@@ -1,9 +1,10 @@
 import routeMain from './routes';
-
-import './styles.scss';
+import DetailPageContent from 'components/DetailPageContent';
 
 const FilmDetailPage = () => {
-    <h1>FilmDetailPage</h1>
+    return (
+        <DetailPageContent/>
+    )
 }
 
 export { routeMain };

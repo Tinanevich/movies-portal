@@ -3,6 +3,7 @@ import MainPage, {routeMain as routeMainPage} from '../../pages/MainPage';
 import CategoryPage, {routeMain as routeCategoryPage} from '../../pages/CategoryPage';
 import FilmDetailPage, {routeMain as routeFilmDetailPage} from '../../pages/FilmDetailPage';
 import InfoPage, {routeMain as routeInfoPage} from '../../pages/InfoPage';
+import SearchPage, {routeMain as routeSearchPage} from '../../pages/SearchPage';
 
 import Header from '../Header';
 import Footer from '../Footer';
@@ -19,6 +20,7 @@ const AppContent = () => {
                 <Route exact path={routeCategoryPage()} component={CategoryPage}/>
                 <Route exact path={routeFilmDetailPage()} component={FilmDetailPage}/>
                 <Route exact path={routeInfoPage()} component={InfoPage}/>
+                <Route exact path={routeSearchPage()} component={SearchPage}/>
                 <Redirect to={{pathname: routeMainPage()}}/>
             </Switch>
         </main>

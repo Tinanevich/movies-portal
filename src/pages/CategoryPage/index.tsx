@@ -1,9 +1,10 @@
 import routeMain from './routes';
-
-import './styles.scss';
+import CategoryPageContent from 'components/CategoryPageContent';
 
 const CategoryPage = () => {
-    <h1>CategoryPage</h1>
+    return (
+        <CategoryPageContent/>
+    )
 }
 
 export { routeMain };

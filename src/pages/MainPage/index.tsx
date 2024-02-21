@@ -1,9 +1,11 @@
 import routeMain from './routes';
-
-import './styles.scss';
+import MainPageContent from 'components/MainPageContent';
 
 const MainPage = () => {
-    <h1>MainPage</h1>
+
+    return (
+       <MainPageContent/>
+    )
 }
 
 export { routeMain }
