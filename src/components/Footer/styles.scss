@@ -8,14 +8,19 @@
 
 	.description {
         font-weight: 500;
+		padding: 5px;
 	}
 	.date {
 		font-weight: 400;
+		padding: 5px;
 	}
 
 	.bio {
         font-weight: 400;
 		font-size: 18px;
+		display: flex;
+		flex-direction: column;
+		padding: 5px;
 		.madeBy {
 			font-size: 12px;
 			margin-top: 0px;

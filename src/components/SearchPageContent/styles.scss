@@ -26,11 +26,13 @@
     outline: 0;
     background-color: black;
     color: #ff9a07;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .categorianWrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 	border-radius: 4px;
 	margin: 0 auto;
 }
@@ -73,8 +75,5 @@
     .resultTitle {
         text-align: center;
         margin-left: 0px;
-    }
-    .categorianWrapper {
-        justify-content: center;
     }
 }

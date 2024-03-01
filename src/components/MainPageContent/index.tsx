@@ -1,15 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from "react";
 import { useEffect } from "react";
 
-import { categoriesList } from "categoriesList/categoriesList";
+import { categoriesList } from "../../constants";
 
 import { useDispatch, useSelector } from "react-redux";
 import { loadMainFilms } from "../../store/mainFilms/actions";
 import { mainSelectList } from "../../store/mainFilms/selectors";
 import { NavLink } from "react-router-dom";
 
-import routeFilmDetailPage from "../../pages/FilmDetailPage/routes";
-import prepareCountry from "../../utils/prepareCountry";
-import prepareImage from "../../utils/prepareImage";
+import { routes } from "../../config/routes";
+import { prepareImageUrl } from "../../utils/utils";
+
 import leo from "../../assets/img/leo.jpg";
 
 import './styles.scss';
@@ -23,23 +25,25 @@ const MainPageContent = () => {
 
 	useEffect(() => {
 		dispatch(loadMainFilms(categories));
-	}, [dispatch, categories]);
+	}, [categories]);
 
     return (
-        <div className="container">
-            <img className="img-head"src={leo} alt="leo"/>
-            <p className="img-title">Самый популярный портал о фильмах</p>
-        <div className="main-page">
-            {mainFilmsList.slice(0,8).map((item) => (
-                <NavLink className="film" key={item.show.id} to={routeFilmDetailPage(item.show.id.toString())}>
-                {prepareImage(item.show.image?.medium)}
-                    <div className="film-title">
-                        <p className="name">{item.show.name}</p>
-                        <p className="country">{prepareCountry(item.show.network?.country.name)}</p>
-                        <p className="genres">{item.show.genres.join(', ')}</p>
-                    </div>
-            </NavLink>))}
-        </div>
+        <div className="main">
+            <div className="image-content">
+                <img className="img-head"src={leo} alt="leo"/>
+                <p className="img-title">Самый популярный портал о фильмах</p>
+            </div>
+            <div className="main-page">
+                {mainFilmsList.slice(0,8).map((item) => (
+                    <NavLink className="film" key={item.show.id} to={routes.filmDetailPage(item.show.id.toString())}>
+                        <img className="film-image" src={prepareImageUrl(item.show.image?.medium)} alt="film"/>
+                        <div className="film-title">
+                            <p className="name">{item.show.name}</p>
+                            <p className="country">{(item.show.network?.country.name) ? (item.show.network?.country.name) : "unknown"}</p>
+                            <p className="genres">{item.show.genres.join(', ')}</p>
+                        </div>
+                </NavLink>))}
+            </div>
     </div>
     )
 }

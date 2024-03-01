@@ -14,6 +14,7 @@
 
 .info-content {
 	margin-left: 50px;
+	width: 100%;
 }
 
 .info-title {
@@ -21,13 +22,11 @@
 	font-weight: 500;
 	font-size: 21px;
 	line-height: 41px;
-	width: 100%;
 	text-align: center;
 }
 
 .info-text {
 	height: 180px;
-	width: 500px;
 	font-weight: 300;
 	font-size: 18px;
 	margin-top: 30px;
@@ -39,6 +38,30 @@
 	text-align: center;
 }
 
+@media screen and (max-width: 1000px) {
+	.info-content {
+		margin-left: 18px;
+	}
+
+	.info-image {
+		max-width: 100%;
+	}
+
+	.info-title {
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 30px;
+	}
+
+	.info-text {
+		height: 150px;
+		font-size: 16px;
+	}
+
+	.info-date {
+		font-size: 15px;
+	}
+}
 @media screen and (max-width: 600px) {
 	.info {
 		flex-direction: column;
@@ -50,9 +73,9 @@
 	}
 
 	.info-title {
-		width: 100%;
 		margin-left: 0px;
 	}
+
 	.info-header {
 		margin-top: 15px;
 		font-weight: 500;
@@ -61,7 +84,10 @@
 
 	.info-text {
 		height: auto;
-		width: 100%;
+		margin-top: 10px;
+	}
+
+	.info-date {
 		margin-top: 10px;
 	}
 }

@@ -1,16 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearFilms, loadMainFilms } from '../../store/mainFilms/actions';
 import { mainSelectList } from "../../store/mainFilms/selectors";
 import { NavLink } from "react-router-dom";
-
-import prepareImage from "utils/prepareImage";
-
-import routeFilmDetailPage from "../../pages/FilmDetailPage/routes";
+import { routes } from "../../config/routes";
 import search from '../../assets/img/search.png';
+import { prepareImageUrl } from '../../utils/utils';
 
 import './styles.scss';
+
 
 const SearchPageContent = () => {
 
@@ -21,7 +22,7 @@ const SearchPageContent = () => {
 
     useEffect(() => {
         dispatch(clearFilms())
-    },[dispatch])
+    },[])
 
     const enterKeyCode = 13;
     const checkKey = (e: any) => e.keyCode === enterKeyCode ? sendRequest() : setValue(e.target.value)
@@ -46,9 +47,9 @@ const SearchPageContent = () => {
             <div className='categorianWrapper'>
                 {mainFilmsList.length > 0
                 ? mainFilmsList.map((item) => (
-                        <NavLink key={item.show.id} className="category" to={routeFilmDetailPage(item.show.id.toString())}>
+                        <NavLink key={item.show.id} className="category" to={routes.filmDetailPage(item.show.id.toString())}>
                             <div className="category-image">
-                                {prepareImage(item.show.image?.medium)}
+                                <img className="film-image" src={prepareImageUrl(item.show.image?.medium)} alt="film"/>
                             </div>
                             <div className="category-text">
                                 <p className="category-name">{item.show.name}</p>

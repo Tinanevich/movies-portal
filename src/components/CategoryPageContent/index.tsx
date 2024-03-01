@@ -1,16 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from "react";
 import { useEffect } from "react";
-import { categoriesList } from "categoriesList/categoriesList";
+import { categoriesList } from "../../constants";
 import { BaseSyntheticEvent } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveCategory } from 'store/activeCategory/actions';
+import { setActiveCategory } from '../../store/activeCategory/actions';
 
-import { selectActiveCategory } from 'store/activeCategory/selectors';
+import { selectActiveCategory } from '../../store/activeCategory/selectors';
 import { mainSelectList } from "../../store/mainFilms/selectors";
 import { loadMainFilms } from "../../store/mainFilms/actions";
-import prepareImage from "utils/prepareImage";
+import { prepareImageUrl } from "../../utils/utils";
 
-import routeFilmDetailPage from "../../pages/FilmDetailPage/routes";
+import { routes } from "../../config/routes";
 
 import { NavLink } from "react-router-dom";
 
@@ -26,7 +28,7 @@ const CategoryPageContent = () => {
 	useEffect(() => {
 		dispatch(loadMainFilms(activeCategory));
         dispatch(setActiveCategory(activeCategory));
-	}, [dispatch, activeCategory])
+	}, [activeCategory])
 
     const changeCategories = (event: BaseSyntheticEvent) => {
         dispatch(setActiveCategory(event.target.innerHTML));
@@ -42,9 +44,9 @@ const CategoryPageContent = () => {
             </div>
             <div className="category-main">
                 {moviesList && moviesList.map((item) => (
-                    <NavLink key={item.show.id} className="category" to={routeFilmDetailPage(item.show.id.toString())}>
+                    <NavLink key={item.show.id} className="category" to={routes.filmDetailPage(item.show.id.toString())}>
                         <div className="category-image">
-                            {prepareImage(item.show.image?.medium)}
+                            <img className="film-image" src={prepareImageUrl(item.show.image?.medium)} alt="film"/>
                         </div>
                         <div className="category-text">
                             <p className="category-name">{item.show.name}</p>

@@ -1,5 +1,5 @@
-import routeMain from './routes';
-import SearchPageContent from 'components/SearchPageContent';
+import React from 'react';
+import SearchPageContent from '../../components/SearchPageContent';
 
 
 const SearchPage = () => {
@@ -7,7 +7,5 @@ const SearchPage = () => {
         <SearchPageContent/>
     )
 }
-
-export { routeMain }
 
 export default SearchPage;

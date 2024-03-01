@@ -1,3 +1,6 @@
+.image-content {
+	position: relative;
+}
 .img-title {
 	color: #ff9a07;
 	position: absolute;
@@ -10,10 +13,9 @@
 	width: 300px;
 }
 .img-head {
-	position: relative;
-	width: 100%;
 	max-height: 450px;
 	border-radius: 4px;
+	width: 100%;
 }
 .main-page {
 	background-repeat: no-repeat;
@@ -21,7 +23,7 @@
 	margin: 0 auto;
 	padding: 30px 30px;
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
     flex-wrap: wrap;
 }
 .film {
@@ -31,6 +33,11 @@
 	margin: 30px;
 	text-decoration: none;
 	padding-bottom: 40px;
+	transition: auto;
+    transition-duration: 30ms;
+}
+.film:hover {
+    transform: scale(1.05);
 }
 
 .film-image {
@@ -67,5 +74,6 @@
 @media screen and (max-width: 600px) {
 	.img-title {
 		font-size: 13px;
+		top: 35%;
 	}
 }

@@ -1,5 +1,5 @@
-import routeMain from './routes';
-import MainPageContent from 'components/MainPageContent';
+import React from 'react';
+import MainPageContent from '../../components/MainPageContent';
 
 const MainPage = () => {
 
@@ -7,7 +7,5 @@ const MainPage = () => {
        <MainPageContent/>
     )
 }
-
-export { routeMain }
 
 export default MainPage;

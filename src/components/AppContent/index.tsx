@@ -1,31 +1,34 @@
+import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import MainPage, {routeMain as routeMainPage} from '../../pages/MainPage';
-import CategoryPage, {routeMain as routeCategoryPage} from '../../pages/CategoryPage';
-import FilmDetailPage, {routeMain as routeFilmDetailPage} from '../../pages/FilmDetailPage';
-import InfoPage, {routeMain as routeInfoPage} from '../../pages/InfoPage';
-import SearchPage, {routeMain as routeSearchPage} from '../../pages/SearchPage';
+import MainPage from '../../pages/MainPage';
+import CategoryPage from '../../pages/CategoryPage';
+import FilmDetailPage from '../../pages/FilmDetailPage';
+import InfoPage from '../../pages/InfoPage';
+import SearchPage from '../../pages/SearchPage';
+import { routes } from '../../config/routes';
 
 import Header from '../Header';
 import Footer from '../Footer';
 
 import './styles.scss';
 
+
 const AppContent = () => {
     return (
-      <div className="mainWrapper">
+      <>
         <Header />
         <main>
             <Switch>
-                <Route exact path={routeMainPage()} component={MainPage}/>
-                <Route exact path={routeCategoryPage()} component={CategoryPage}/>
-                <Route exact path={routeFilmDetailPage()} component={FilmDetailPage}/>
-                <Route exact path={routeInfoPage()} component={InfoPage}/>
-                <Route exact path={routeSearchPage()} component={SearchPage}/>
-                <Redirect to={{pathname: routeMainPage()}}/>
+                <Route exact path={routes.mainPage()} component={MainPage}/>
+                <Route exact path={routes.categoryPage()} component={CategoryPage}/>
+                <Route exact path={routes.filmDetailPage()} component={FilmDetailPage}/>
+                <Route exact path={routes.infoPage()} component={InfoPage}/>
+                <Route exact path={routes.searchPage()} component={SearchPage}/>
+                <Redirect to={{pathname: routes.mainPage()}}/>
             </Switch>
         </main>
         <Footer />
-      </div>
+      </>
     );
   }
 

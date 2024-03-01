@@ -9,26 +9,26 @@
         height: 50px;
         border-radius: 10px;
     }
-    nav {
-        a {
+    .content {
+        .content-page {
             flex-wrap: nowrap;
             justify-content: space-around;
             padding-left: 25px;
 			font-weight: 400;
 			font-size: 16px;
-			line-height: 27px;
+			line-height: 30px;
             text-decoration: none;
             color: #ff9a07;
             &.linkActive {
                 text-decoration: underline;
-                text-underline-offset: 10px;
+                text-underline-offset: 6px;
                 color: #10ab00;
             }
             &:first-child {
                 margin-left: 0;
             }
         }
-        a:hover {
+        .content-page:hover {
             color: #10ab00;
         }
     }
@@ -42,8 +42,8 @@
     .title {
         text-align: center;
     }
-    nav {
-        a {
+    .content {
+        .content-page {
            display: flex;
         }
     }

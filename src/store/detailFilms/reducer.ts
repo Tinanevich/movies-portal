@@ -1,15 +1,13 @@
-import { AnyAction } from "redux"
-
-import { IStore } from "./types";
+import { IDetailAction} from "./types";
 
 const initialState = {
-	list: [],
+	list: {},
 }
 
-const detailFilmReducer = (state : IStore = initialState, action : AnyAction) => {
+const detailFilmReducer = (state = initialState, action : IDetailAction) => {
 	switch (action.type) {
-		case 'show/setDetail' :
-			return {...state, list: [...action.payload]}
+		case 'film/setDetail':
+			return {...state, list: {...action.payload}}
 		default:
 			return state
 	}

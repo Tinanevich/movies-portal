@@ -9,7 +9,7 @@ import activeCategoryReducer  from './activeCategory/reducer';
 const rootReducer = combineReducers({
     detailFilmReducer,
     mainFilmsReducer,
-    activeCategoryReducer 
+    activeCategoryReducer
 })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))

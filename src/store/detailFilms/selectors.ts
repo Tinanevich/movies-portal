@@ -1,5 +1,3 @@
-import { IStore } from "./types"
+import { IDetailStore } from "./types";
 
-export const detailSelectList = (state : { detailFilmReducer : IStore}) : IStore['list'] => state.detailFilmReducer.list;
-
-
+export const detailSelectList = (state : IDetailStore) => state.detailFilmReducer.list;

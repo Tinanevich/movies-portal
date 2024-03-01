@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import React from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
@@ -7,44 +9,41 @@ import { detailSelectList } from "../../store/detailFilms/selectors";
 import { ID } from "../../types/ID";
 import { loadDetail } from "../../store/detailFilms/actions";
 
-import prepareDate from "../../utils/prepareDate";
-import prepareCountry from "../../utils/prepareCountry";
-import prepareSummary from "../../utils/prepareSummary";
-import prepareRating from "../../utils/prepareRating";
-import prepareImage from "../../utils/prepareImage";
-import Star from '../../assets/img/star.png';
+import { prepareImageUrl } from "../../utils/utils";
+import { prepareSummary } from "../../utils/utils";
+import star from '../../assets/img/star.png';
 
 import './styles.scss';
+
 
 const DetailPageContent = () => {
 
     const { id } = useParams<ID>()
 	const dispatch = useDispatch()
-	const showDetail = useSelector(detailSelectList)
+	const filmDetail = useSelector(detailSelectList)
 
 	useEffect(() => {
 		dispatch(loadDetail(id))
-	}, [id, dispatch])
-    console.log(showDetail)
+	}, [id])
 
     return (
-        <div className="wrapper">
-            {showDetail.length > 0 ? (
+        <div className="detailPageContent">
+            {filmDetail.id ? (
                 <div className="film-detail">
-                    {prepareImage(showDetail[0].image?.medium)}
+                    <img className="film-image" src={prepareImageUrl(filmDetail.image?.medium)} alt="film"/>
                     <div className="film_info">
                         <div className="detail-head">
-                            <div className="film-name">{showDetail[0].name}</div>
+                            <div className="film-name">{filmDetail.name}</div>
                             <div className="rating">
-                                <img className="star" src={Star} alt="star" />
-                                <span>{prepareRating(showDetail[0].rating.average)}</span>
+                                <img className="star" src={star} alt="star" />
+                                <span>{(filmDetail.rating.average) ? (filmDetail.rating.average + "/10") : "unknown"}</span>
                             </div>
                         </div>
                         <ul className="detail-content">
-                            <li className="content-key">Год выхода: <span className="content-value">{prepareDate(showDetail[0].ended)}</span></li>
-                            <li className="content-key">Страна: <span className="content-value">{prepareCountry(showDetail[0].network?.country.name)}</span></li>
-                            <li className="content-key">Жанр: <span className="content-value">{showDetail[0].genres.join(', ')}</span></li>
-                            <li className="content-key">Описание: <span className="content-value">{prepareSummary(showDetail[0].summary)}</span></li>
+                            <li className="content-key">Год выхода: <span className="content-value">{filmDetail.ended && filmDetail.ended.slice(0, 4)}</span></li>
+                            <li className="content-key">Страна: <span className="content-value">{(filmDetail.network?.country.name) ? (filmDetail.network?.country.name) : 'unknown'}</span></li>
+                            <li className="content-key">Жанр: <span className="content-value">{filmDetail.genres.join(', ')}</span></li>
+                            <li className="content-key">Описание: <span className="content-value" dangerouslySetInnerHTML= {prepareSummary(filmDetail.summary)}></span></li>
                         </ul>
                     </div>
                 </div>
