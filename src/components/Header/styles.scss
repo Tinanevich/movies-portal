@@ -38,13 +38,23 @@
     .mainHeader{
         flex-direction: column;
         justify-content: center;
-    }
-    .title {
-        text-align: center;
-    }
-    .content {
-        .content-page {
-           display: flex;
+        margin: 0;
+
+        .title {
+            text-align: center;
+        }
+
+        .logo {
+            margin-left: 0;
+        }
+
+        .content {
+            .content-page {
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                padding-left: 0;
+            }
         }
     }
 }

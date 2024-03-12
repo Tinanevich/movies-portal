@@ -4,9 +4,9 @@
 
 .btn-content {
     display: flex;
+    flex-wrap: wrap;
     font-size: 18px;
     min-width: 260px;
-    flex-wrap: wrap;
 }
 
 .btn-item {
